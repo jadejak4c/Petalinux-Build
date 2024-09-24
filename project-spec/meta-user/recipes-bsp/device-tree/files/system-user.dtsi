@@ -1,0 +1,24 @@
+/include/ "system-conf.dtsi"
+//include/ "pl.dtsi"
+/ {
+    chosen {
+        bootargs = "earlycon console=ttyPS0,115200 root=/dev/mmcblk0p2 rw rootwait";
+        stdout-path = "serial0:115200n8";
+    };
+};
+  
+
+&sdhci1 { /* FIXME - on CC - MIO 39 - 51 */
+status = "okay";
+no-1-8-v;
+disable-wp;
+broken-cd;
+xlnx,mio-bank = <1>;
+/* Do not run SD in HS mode from bootloader */
+sdhci-caps-mask = <0 0x200000>;
+sdhci-caps = <0 0>;
+max-frequency = <19000000>;
+};
+//&axi_gpio_0 {
+//    compatible = "generic-uio";
+//};
