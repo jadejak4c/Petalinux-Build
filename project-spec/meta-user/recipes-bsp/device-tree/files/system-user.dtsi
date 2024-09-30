@@ -1,5 +1,4 @@
 /include/ "system-conf.dtsi"
-//include/ "pl.dtsi"
 / {
     chosen {
         bootargs = "earlycon console=ttyPS0,115200 root=/dev/mmcblk0p2 rw rootwait";
