@@ -1,9 +1,20 @@
 /include/ "system-conf.dtsi"
+//incldue/ "pl.dtsi"
 / {
     chosen {
-        bootargs = "earlycon console=ttyPS0,115200 root=/dev/mmcblk0p2 rw rootwait";
+        bootargs = "earlycon clk_ignore_unused console=ttyPS0,115200 root=/dev/mmcblk0p2 rw rootwait";
         stdout-path = "serial0:115200n8";
     };
+    memory {
+       device_type = "memory";
+       reg = <0x0 0x0 0x0 0x80000000>, <0x0 0xA0000000 0x0 0x8000>, <0x00000008 0x00000000 0x0 0x80000000>;
+   };
+   reserved-memory {
+       ranges;
+       reserved {
+           reg = <0x0 0xa0000000 0x0 0x8000>;
+       };
+   }; 
 };
   
 
@@ -19,5 +30,5 @@ sdhci-caps = <0 0>;
 max-frequency = <19000000>;
 };
 //&axi_gpio_0 {
-//    compatible = "generic-uio";
+///compatible = "generic-uio";
 //};

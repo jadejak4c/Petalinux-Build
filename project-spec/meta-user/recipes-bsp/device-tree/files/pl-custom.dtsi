@@ -1,2 +1,7 @@
+/include/ "pl.dtsi"
 / {
+};
+
+&axi_gpio_0 {
+    compatible = "generic-uio";
 };
