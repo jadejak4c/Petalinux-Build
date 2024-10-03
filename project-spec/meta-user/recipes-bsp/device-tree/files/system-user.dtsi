@@ -29,6 +29,20 @@ sdhci-caps-mask = <0 0x200000>;
 sdhci-caps = <0 0>;
 max-frequency = <19000000>;
 };
+
+
+&gem3 {
+status = "okay";
+local-mac-address = [00 0a 35 00 22 01];
+phy-mode = "rgmii-id";
+phy-handle = <&phy0>;
+phy0: phy@c {
+reg = <0xc>;
+ti,rx-internal-delay = <0x8>;
+ti,tx-internal-delay = <0xa>;
+ti,fifo-depth = <0x1>;
+};
+};
 //&axi_gpio_0 {
 ///compatible = "generic-uio";
 //};

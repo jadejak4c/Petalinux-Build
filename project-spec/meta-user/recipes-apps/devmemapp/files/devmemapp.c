@@ -4,6 +4,7 @@
  *
  */
 #include <stdio.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/mman.h>
@@ -12,12 +13,15 @@
 #define IN 0
 #define OUT 1
 
+#define LED_DELAY 10000000
+
 void usage(void)
 {
     printf("Usage: *argv[0] -g <GPIO_ADDRESS> -i|-o <VALUE>\n");
     printf("    -g <GPIO_ADDR>   GPIO physical address\n");
     printf("    -i               Input from GPIO\n");
     printf("    -o <VALUE>       Output to GPIO\n");
+    printf("    -l               PWM output");
     return;
 }
 
@@ -28,6 +32,7 @@ int main(int argc, char *argv[])
     int direction = IN;
     unsigned gpio_addr = 0;
     int value = 0;
+    bool _pwm =  false;
 
     unsigned page_addr, page_offset;
     void *ptr;
@@ -51,6 +56,9 @@ int main(int argc, char *argv[])
         case 'h':
             usage();
             return 0;
+        case 'l':
+            _pwm = true;
+            break;
         default:
             printf("Invalid option: %c\n", (char)c);
             usage();
@@ -82,14 +90,27 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    if (direction == IN) {
+    if(_pwm)
+    {
+        while(1)
+        {
+            *((unsigned *)(ptr + page_offset)) = 0x1;
+            for (long Delay = 0; Delay < LED_DELAY; Delay++);
+            *((volatile unsigned *)(ptr + page_offset)) = 0x0;
+        }
+        munmap(ptr, page_size);
+        close(fd);
+
+    }
+    else if (direction == IN) {
         /* Read value from the device register */
         value = *((unsigned *)(ptr + page_offset));
         printf("GPIO dev-mem test: input: %08x\n", value);
-    } else {
+    } else if (direction == OUT) {
         /* Write value to the device register */
         *((unsigned *)(ptr + page_offset)) = value;
     }
+
 
     /* Unmap and close */
     munmap(ptr, page_size);
