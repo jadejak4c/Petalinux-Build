@@ -4218,12 +4218,14 @@ CONFIG_imagefeature-debug-tweaks=y
 #
 # apps 
 #
+CONFIG_devmemapp=y
 CONFIG_gpio-demo=y
 # CONFIG_peekpoke is not set
 
 #
 # user packages 
 #
+# CONFIG_myapp is not set
 
 #
 # PetaLinux RootFS Settings

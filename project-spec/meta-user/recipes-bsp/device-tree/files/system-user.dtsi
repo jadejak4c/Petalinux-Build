@@ -1,8 +1,8 @@
 /include/ "system-conf.dtsi"
-//incldue/ "pl.dtsi"
+
 / {
     chosen {
-        bootargs = "earlycon clk_ignore_unused console=ttyPS0,115200 root=/dev/mmcblk0p2 rw rootwait";
+        bootargs = "earlycon clk_ignore_unused console=ttyPS0,115200 root=/dev/mmcblk0p3 rw rootwait";
         stdout-path = "serial0:115200n8";
     };
     memory {

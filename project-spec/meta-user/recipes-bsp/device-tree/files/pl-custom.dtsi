@@ -1,7 +1,7 @@
-/include/ "pl.dtsi"
-/ {
-};
+// /include/ "pl.dtsi"
+// / {
+// };
 
-&axi_gpio_0 {
-    compatible = "generic-uio";
-};
+// &axi_gpio_0 {
+//     compatible = "generic-uio";
+// };
