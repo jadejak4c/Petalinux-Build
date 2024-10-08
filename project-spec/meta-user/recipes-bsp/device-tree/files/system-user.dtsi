@@ -2,7 +2,7 @@
 //include/ "pl.dtsi"
 / {
     chosen {
-        bootargs = "earlycon console=ttyPS0,115200 root=/dev/mmcblk0p2 rw rootwait";
+        bootargs = "earlycon uio_pdrv_genirq.of_id=generic-uio console=ttyPS0,115200 root=/dev/mmcblk0p2 rw rootwait";
         stdout-path = "serial0:115200n8";
     };
 };
@@ -18,6 +18,25 @@ xlnx,mio-bank = <1>;
 sdhci-caps-mask = <0 0x200000>;
 sdhci-caps = <0 0>;
 max-frequency = <19000000>;
+};
+
+&gem3 {
+    status = "okay";
+    local-mac-address = [00 0a 35 00 22 01];
+    phy-mode = "rgmii-id";
+    phy-handle = <&phy0>;
+    phy0: phy@c {
+    reg = <0xc>;
+    ti,rx-internal-delay = <0x8>;
+    ti,tx-internal-delay = <0xa>;
+    ti,fifo-depth = <0x1>;
+};
+};
+
+&uart0
+{
+
+    compatible = "xuartps, xlnx,zynqmp-uart";
 };
 //&axi_gpio_0 {
 //    compatible = "generic-uio";

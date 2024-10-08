@@ -1,10 +1,11 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 SRC_URI += "file://system-user.dtsi"
+SRC_URI += "file://pl-custom.dtsi"
 
 python () {
     if d.getVar("CONFIG_DISABLE"):
-        d.setVarFlag("do_configure", "noexec", "1")
+        d.setVarFlag("do_configure", "noexec	", "1")
 }
 
 export PETALINUX

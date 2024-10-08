@@ -301,7 +301,7 @@ CONFIG_mtd-utils=y
 #
 # bash 
 #
-# CONFIG_bash is not set
+CONFIG_bash=y
 # CONFIG_bash-dbg is not set
 # CONFIG_bash-dev is not set
 
@@ -4218,6 +4218,7 @@ CONFIG_imagefeature-debug-tweaks=y
 #
 # apps 
 #
+CONFIG_dma=y
 CONFIG_gpio-demo=y
 # CONFIG_peekpoke is not set
 
