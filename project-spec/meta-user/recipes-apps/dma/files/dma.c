@@ -92,12 +92,14 @@ void memdump(void* virtual_address, int byte_count) {
 int main() {
     int dh = open("/dev/mem", O_RDWR | O_SYNC); // Open /dev/mem which represents the whole physical memory
     unsigned int* virtual_address = mmap(NULL, 65535, PROT_READ | PROT_WRITE, MAP_SHARED, dh, 0xA0010000); // Memory map AXI Lite register block
-    unsigned int* virtual_source_address  = mmap(NULL, 65535, PROT_READ | PROT_WRITE, MAP_SHARED, dh, 0xC0000000); // Memory map source address
-    unsigned int* virtual_destination_address = mmap(NULL, 65535, PROT_READ | PROT_WRITE, MAP_SHARED, dh, 0xE0000000); // Memory map destination address
-
+    printf("retrieved file descriptor\b");
+    unsigned int* virtual_source_address  = mmap(NULL, 65535, PROT_READ | PROT_WRITE, MAP_SHARED, dh, 0x0e000000); // Memory map source address
+    printf("retrieved source\n");
+    unsigned int* virtual_destination_address = mmap(NULL, 65535, PROT_READ | PROT_WRITE, MAP_SHARED, dh, 0x0f000000); // Memory map destination address
+    printf("retrieved dest\n");
     virtual_source_address[0]= 0x11223344; // Write random stuff to source block
     memset(virtual_destination_address, 0, 32); // Clear destination block
-
+    
     printf("Source memory block:      "); memdump(virtual_source_address, 32);
     printf("Destination memory block: "); memdump(virtual_destination_address, 32);
 
