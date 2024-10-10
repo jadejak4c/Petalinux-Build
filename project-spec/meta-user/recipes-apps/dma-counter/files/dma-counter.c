@@ -228,7 +228,7 @@ int fcreate(){
 
 	
 	//sprintf(filename, "%s/daq_R%d_EC%d_T%d.bin", dirname, num_rp, num_ec, timer);
-	sprintf(filename, "%s/daq_R%d_EC%d_T%d.bin", dirname, num_rp, num_ec, timer);
+	sprintf(filename, "%s/daq_R%d_EC%d_T%d.txt", dirname, num_rp, num_ec, timer);
 	printf("Data stored in %s", filename);
 	
     // Open timestamp log
@@ -275,10 +275,10 @@ int store_data(uint32_t decim, uint32_t buflen) {
 
 	while (run) {
 // Obtain current GPIO values from FPGA
-		imaging = *idleImaging  & 0x0000001;
-		idle = *idleImaging & 0x0000010;
+	//	imaging = *idleImaging  & 0x0000001;
+	//	idle = *idleImaging & 0x0000010;
 		trigger_value = *trigger_gpio;
-        written = *written_out;
+    //   written = *written_out;
 
 	//	printf("imaging %d Idle: %d\n", imaging, idle);
 
@@ -334,7 +334,10 @@ int store_data(uint32_t decim, uint32_t buflen) {
                         dma_s2mm_sync(dma_virtual_addr);
                         dma_s2mm_status(dma_virtual_addr);
 
-                        fwrite(virtual_dst_addr, sizeof(int32_t), buflen, fptr);
+                        // fwrite(virtual_dst_addr, sizeof(int32_t), buflen, fptr);
+						for (int i = 0; i < buflen; i++) {
+  							  fprintf(fptr, "%d\n", ((int32_t*)virtual_dst_addr)[i]);
+							}
 
                         finished_flag = 0;
 
