@@ -296,7 +296,8 @@ int store_data(uint32_t decim, uint32_t buflen) {
 			printf("written %d trigger value: %d, finished_flag: %d\n", written, trigger_value, finished_flag);
 
 // To not conflict writing twice for the same trigger pulse
-            if (written) {
+//            if (written) {
+			if (trigger_value) {
 					if(finished_flag){
                         
                         finished_count = finished_count+1;
