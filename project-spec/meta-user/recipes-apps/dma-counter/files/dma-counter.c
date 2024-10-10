@@ -302,36 +302,36 @@ int store_data(uint32_t decim, uint32_t buflen) {
                         
                         finished_count = finished_count+1;
 
-            //printf("Clearing the destination register block...\n");
+            printf("Clearing the destination register block...\n");
                         memset(virtual_dst_addr, 0, buflen*4);
 
-            //printf("Reset the DMA.\n");
+            printf("Reset the DMA.\n");
                         write_dma(dma_virtual_addr, S2MM_CONTROL_REGISTER, RESET_DMA);
                         dma_s2mm_status(dma_virtual_addr);
 
-            //printf("Halt the DMA.\n");
+            printf("Halt the DMA.\n");
                         write_dma(dma_virtual_addr, S2MM_CONTROL_REGISTER, HALT_DMA);
                         dma_s2mm_status(dma_virtual_addr);
 
-            //printf("Enable all interrupts.\n");
+            printf("Enable all interrupts.\n");
                         write_dma(dma_virtual_addr, S2MM_CONTROL_REGISTER, ENABLE_ALL_IRQ);
                         dma_s2mm_status(dma_virtual_addr);
 
-            //printf("Writing the destination address for the data from S2MM in DDR...\n");
+            printf("Writing the destination address for the data from S2MM in DDR...\n");
                         write_dma(dma_virtual_addr, S2MM_DST_ADDRESS_REGISTER, 0x0f000000);
                         dma_s2mm_status(dma_virtual_addr);
 
-            //printf("Run the S2MM channel.\n");
+            printf("Run the S2MM channel.\n");
                         write_dma(dma_virtual_addr, S2MM_CONTROL_REGISTER, RUN_DMA);
                         dma_s2mm_status(dma_virtual_addr);
 
                         
-            //printf("Writing S2MM transfer length of 32 bytes...\n");
+            printf("Writing S2MM transfer length of 32 bytes...\n");
                         write_dma(dma_virtual_addr, S2MM_BUFF_LENGTH_REGISTER, buflen*4);
                         dma_s2mm_status(dma_virtual_addr);
 
 
-            //printf("Waiting for S2MM sychronization...\n");
+            printf("Waiting for S2MM sychronization...\n");
                         dma_s2mm_sync(dma_virtual_addr);
                         dma_s2mm_status(dma_virtual_addr);
 
