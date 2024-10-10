@@ -2437,20 +2437,20 @@ CONFIG_udev-extraconf=y
 #
 # gcc-runtime 
 #
-# CONFIG_libstdcPLUSPLUS-dev is not set
+CONFIG_libstdcPLUSPLUS-dev=y
 # CONFIG_libstdcPLUSPLUS is not set
 
 #
 # gcr 
 #
-# CONFIG_gcr is not set
+CONFIG_gcr=y
 # CONFIG_gcr-dev is not set
 # CONFIG_gcr-dbg is not set
 
 #
 # gdb 
 #
-# CONFIG_gdb is not set
+CONFIG_gdb=y
 # CONFIG_gdb-dev is not set
 # CONFIG_gdbserver is not set
 # CONFIG_gdb-dbg is not set
@@ -2458,7 +2458,7 @@ CONFIG_udev-extraconf=y
 #
 # glib-2.0 
 #
-# CONFIG_glib-2.0 is not set
+CONFIG_glib-2.0=y
 # CONFIG_glib-2.0-dbg is not set
 # CONFIG_glib-2.0-dev is not set
 # CONFIG_glib-2.0-codegen is not set
@@ -2468,7 +2468,7 @@ CONFIG_udev-extraconf=y
 #
 # glibc 
 #
-# CONFIG_glibc is not set
+CONFIG_glibc=y
 # CONFIG_glibc-dev is not set
 # CONFIG_glibc-dbg is not set
 # CONFIG_ldd is not set
@@ -2483,7 +2483,7 @@ CONFIG_udev-extraconf=y
 #
 # gnutls 
 #
-# CONFIG_gnutls is not set
+CONFIG_gnutls=y
 # CONFIG_gnutls-bin is not set
 # CONFIG_gnutls-xx is not set
 # CONFIG_gnutls-dbg is not set
@@ -2871,7 +2871,7 @@ CONFIG_packagegroup-core-ssh-dropbear=y
 #
 # python3 
 #
-# CONFIG_python3 is not set
+CONFIG_python3=y
 # CONFIG_python3-crypt is not set
 # CONFIG_python3-unixadmin is not set
 # CONFIG_python3-io is not set
@@ -4219,6 +4219,7 @@ CONFIG_imagefeature-debug-tweaks=y
 # apps 
 #
 CONFIG_dma=y
+CONFIG_dma-counter=y
 CONFIG_gpio-demo=y
 # CONFIG_peekpoke is not set
 

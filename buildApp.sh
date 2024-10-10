@@ -1,4 +1,4 @@
-petalinux-build -c dma
+petalinux-build -c dma-counter
 petalinux-build -c rootfs
 petalinux-build -x package
-petalinux-build -c dma -x do_install
+petalinux-build -c dma-counter -x do_install

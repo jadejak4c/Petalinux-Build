@@ -35,8 +35,7 @@ max-frequency = <19000000>;
 
 &uart0
 {
-
-    compatible = "xuartps, xlnx,zynqmp-uart";
+    status="okay";
 };
 //&axi_gpio_0 {
 //    compatible = "generic-uio";
